@@ -6,21 +6,11 @@ message StringMessage {
 }
    
 service YourService {
-  rpc Echo(StringMessage) returns (StringMessage) {
-    option (google.api.http) = {
-      post: "/v1/example/echo"
-      body: "*"
-    };
-  }
+  rpc Echo(StringMessage) returns (StringMessage) { option (google.api.http) = { post: "/v1/example/echo" ,body: "*" }; }
 }
 
 service AddItemService {
-  rpc AddItem(AddItemRequest) returns (AddItemRequest) {
-    option (google.api.http) = {
-      post: "/v1/example/addItem"
-      body: "*"
-    };
-  }
+  rpc AddItem(AddItemRequest) returns (AddItemRequest) { option (google.api.http) = { post: "/v1/example/addItem" ,body: "*" }; }
 }
 
 message AddItemRequest{
