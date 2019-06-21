@@ -1,0 +1,40 @@
+syntax = "proto3";
+package example;
+import "google/api/annotations.proto";
+message StringMessage {
+  string value = 1;
+}
+   
+service YourService {
+  rpc Echo(StringMessage) returns (StringMessage) {
+    option (google.api.http) = {
+      post: "/v1/example/echo"
+      body: "*"
+    };
+  }
+}
+
+service AddItemService {
+  rpc AddItem(AddItemRequest) returns (AddItemRequest) {
+    option (google.api.http) = {
+      post: "/v1/example/addItem"
+      body: "*"
+    };
+  }
+}
+
+message AddItemRequest{
+    uint64   userId = 1;          // UserId
+    uint64   itemType = 2;        // 物品类型
+    int64    itemQuantity = 3;    // 物品数量
+    string   orderId = 4;         // 物品订单号
+    uint64   source = 5;          // 调用方id
+    repeated Property prptys = 6; //物品属性
+    string   itemName = 7;        // 物品类型名称
+}
+message Property{
+    string itemId = 1;
+    uint64 id = 2;
+    int64  value = 3;
+    string info = 4;
+}
